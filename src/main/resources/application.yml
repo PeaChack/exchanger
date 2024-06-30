@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: exchanger
+  datasource:
+    url: jdbc:h2:file:./data/exchangerDB
+    username: sa
+    password: root
+    driver-class-name: org.h2.Driver
+  jpa:
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+  liquibase:
+    enabled: true
+  h2:
+    console:
+      enabled: true
+bank:
+  api:
+    urls:
+      nbrb: https://api.nbrb.by/exrates

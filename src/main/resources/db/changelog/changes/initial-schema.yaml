@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: PeaChack
+      changes:
+        - createTable:
+            tableName: "currency"
+            columns:
+              - column:
+                  name: "id"
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: "name"
+                  type: varchar(255)
+              - column:
+                  name: "code"
+                  type: int
+              - column:
+                  name: "abbreviation"
+                  type: varchar(3)
+                  constraints:
+                    nullable: false
+        - createTable:
+            tableName: "currency_rate"
+            columns:
+              - column:
+                  name: "id"
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: "currency_id"
+                  type: int
+              - column:
+                  name: "scale"
+                  type: int
+              - column:
+                  name: "date"
+                  type: date
+              - column:
+                  name: "official_rate"
+                  type: double
+        - addForeignKeyConstraint:
+            baseTableName: "currency_rate"
+            baseColumnNames: "currency_id"
+            constraintName: "currency_id"
+            referencedTableName: "currency"
+            referencedColumnNames: "id"
