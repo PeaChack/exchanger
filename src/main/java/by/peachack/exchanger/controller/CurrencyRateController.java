@@ -34,7 +34,7 @@ public class CurrencyRateController {
 
 
     @GetMapping("/rate")
-    ResponseEntity<CurrencyRateDTO> getRate(@RequestParam(name = "dateStr", required = false) String dateStr,
+    ResponseEntity<CurrencyRateDTO> getRate(@RequestParam(name = "date", required = false) String dateStr,
                                             @RequestParam(name = "code") Integer code) {
         LocalDate date = parseDate(dateStr);
         CurrencyRate currencyRate = currencyRateService.getRate(date, code);
